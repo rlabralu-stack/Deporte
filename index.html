@@ -112,26 +112,63 @@ main,
   max-height: none !important;
 }
 
-.scroll-test-badge {
-  position: fixed;
-  right: 8px;
-  top: 8px;
-  z-index: 99999;
-  background: #ffdf24;
-  color: #111;
-  padding: 5px 8px;
-  border-radius: 8px;
-  font: 700 11px/1 system-ui, sans-serif;
-  pointer-events: none;
-}
+
 
 @media (min-width:720px) {
   body { padding: 24px 0 !important; }
 }
 </style>
 
+
+<style id="horizontal-scroll-final">
+.h-scroll,
+.media-scroll,
+.tabs,
+.related {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-x: contain !important;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  touch-action: pan-x pan-y !important;
+  cursor: grab;
+}
+.h-scroll::-webkit-scrollbar,
+.media-scroll::-webkit-scrollbar,
+.tabs::-webkit-scrollbar,
+.related::-webkit-scrollbar {
+  display: none !important;
+}
+.h-scroll > *,
+.media-scroll > *,
+.tabs > *,
+.related > * {
+  flex: 0 0 auto !important;
+}
+.h-scroll > * { width: 86% !important; }
+.media-scroll > * { width: 72% !important; }
+.tabs > .tab {
+  width: auto !important;
+  white-space: nowrap !important;
+}
+.related > * { min-width: 110px !important; }
+.h-scroll.is-dragging,
+.media-scroll.is-dragging,
+.tabs.is-dragging,
+.related.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+  user-select: none;
+}
+</style>
+
 </head>
-<body><div class="scroll-test-badge">SCROLL TEST v6</div>
+<body>
 <div class="app">
 <header class="topbar"><div><div class="eyebrow">Buenos días, Rafa</div><div class="brandline">Tu deporte, a tu ritmo</div></div><div class="top-actions"><button class="icon-btn" onclick="navTo('search',document.querySelector('[data-target=search]'))">⌕</button><div class="avatar">R</div></div></header>
 
@@ -228,4 +265,57 @@ function toggleFav(name){favorites=favorites.includes(name)?favorites.filter(x=>
 function renderFavs(){document.getElementById('favList').innerHTML=favorites.length?favorites.map(n=>`<div class="row"><div class="row-icon">♥</div><div class="grow"><strong>${n}</strong><br><small>Favorito</small></div><button class="link" onclick="toggleFav('${n}');renderFavs()">Quitar</button></div>`).join(''):'<div class="card panel"><strong>Aún no tienes favoritos.</strong><p style="color:var(--muted)">Añade deportistas o competiciones desde sus fichas.</p></div>'}
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.opacity=1;setTimeout(()=>t.style.opacity=0,1600)}renderSearch();renderFavs();
 </script>
+
+<script>
+(function () {
+  function enableHorizontalDrag(scroller) {
+    let startX = 0;
+    let startY = 0;
+    let startScrollLeft = 0;
+    let dragging = false;
+    let horizontalIntent = false;
+
+    scroller.addEventListener('touchstart', function (event) {
+      if (!event.touches || event.touches.length !== 1) return;
+      startX = event.touches[0].clientX;
+      startY = event.touches[0].clientY;
+      startScrollLeft = scroller.scrollLeft;
+      dragging = true;
+      horizontalIntent = false;
+    }, { passive: true });
+
+    scroller.addEventListener('touchmove', function (event) {
+      if (!dragging || !event.touches || event.touches.length !== 1) return;
+      const dx = event.touches[0].clientX - startX;
+      const dy = event.touches[0].clientY - startY;
+      if (!horizontalIntent && Math.abs(dx) > 7) {
+        horizontalIntent = Math.abs(dx) > Math.abs(dy);
+      }
+      if (horizontalIntent) {
+        event.preventDefault();
+        scroller.scrollLeft = startScrollLeft - dx;
+      }
+    }, { passive: false });
+
+    function stopTouch() {
+      dragging = false;
+      horizontalIntent = false;
+    }
+    scroller.addEventListener('touchend', stopTouch, { passive: true });
+    scroller.addEventListener('touchcancel', stopTouch, { passive: true });
+  }
+
+  function initializeHorizontalScroll() {
+    document.querySelectorAll('.h-scroll, .media-scroll, .tabs, .related')
+      .forEach(enableHorizontalDrag);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeHorizontalScroll);
+  } else {
+    initializeHorizontalScroll();
+  }
+})();
+</script>
+
 </body></html>
