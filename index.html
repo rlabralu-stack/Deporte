@@ -34,65 +34,121 @@ button,input{font:inherit}button{cursor:pointer}.app{width:min(100%,470px);min-h
 @media(min-width:720px){body{padding:24px}.app{border-radius:28px;overflow:hidden;box-shadow:0 28px 100px rgba(0,0,0,.55)}.bottom{bottom:24px;border-radius:0 0 28px 28px}}
 </style>
 
-<style id="scroll-fix">
-html, body {
+
+
+
+
+
+
+<style id="mobile-scroll-final">
+:root {
+  --bottom-nav-height: 76px;
+}
+
+html {
+  width: 100%;
   min-height: 100%;
   height: auto !important;
-  overflow-x: hidden;
-  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overflow-y: scroll !important;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  width: 100%;
+  min-height: 100%;
+  height: auto !important;
+  margin: 0;
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+  touch-action: auto !important;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: auto;
 }
-body { touch-action: pan-y; }
+
 .app {
+  position: relative !important;
+  width: min(100%, 470px) !important;
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
   height: auto !important;
-  min-height: 100dvh;
-  overflow-x: hidden !important;
-  overflow-y: visible !important;
-  touch-action: pan-y;
-  padding-bottom: calc(112px + env(safe-area-inset-bottom)) !important;
-}
-.screen {
-  min-height: auto !important;
-  height: auto !important;
+  max-height: none !important;
+  margin: 0 auto !important;
+  padding-bottom: calc(var(--bottom-nav-height) + 34px + env(safe-area-inset-bottom)) !important;
   overflow: visible !important;
+  contain: none !important;
+  touch-action: auto !important;
 }
+
+main,
+.screen,
 .content {
-  padding-bottom: 52px !important;
+  position: relative !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
   overflow: visible !important;
+  touch-action: pan-y !important;
 }
-.h-scroll, .media-scroll, .tabs, .related {
-  touch-action: pan-x pan-y;
-  -webkit-overflow-scrolling: touch;
-}
-.profile-cover { flex-shrink: 0; }
-</style>
 
+.screen.hidden {
+  display: none !important;
+}
 
-<style id="official-scroll-fix">
-html, body {
-  min-height: 100%;
-  height: auto !important;
-  overflow-x: hidden;
-  overflow-y: auto !important;
+.profile-cover,
+.card,
+.dashboard-grid,
+.section {
+  max-height: none !important;
+  overflow: visible;
+}
+
+.profile-cover {
+  overflow: hidden !important;
+}
+
+.h-scroll,
+.media-scroll,
+.tabs,
+.related {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  touch-action: pan-x !important;
   -webkit-overflow-scrolling: touch;
 }
-body { touch-action: pan-y; }
-.app {
-  min-height: 100dvh;
+
+.bottom {
+  position: fixed !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: 0 !important;
+  transform: translateX(-50%) !important;
+  width: min(100%, 470px) !important;
   height: auto !important;
-  overflow-x: hidden !important;
-  overflow-y: visible !important;
-  padding-bottom: calc(116px + env(safe-area-inset-bottom)) !important;
+  z-index: 999 !important;
 }
-.screen, .content {
-  height: auto !important;
-  min-height: auto !important;
-  overflow: visible !important;
+
+@media (min-width: 720px) {
+  html, body {
+    overflow-y: auto !important;
+  }
+  body {
+    padding: 24px 0 !important;
+  }
+  .app {
+    overflow: visible !important;
+    border-radius: 28px !important;
+  }
+  .bottom {
+    bottom: 24px !important;
+  }
 }
-.content { padding-bottom: 54px !important; }
-.h-scroll, .media-scroll, .tabs, .related {
-  -webkit-overflow-scrolling: touch;
+
+/* Extra room after the final block on every screen. */
+.screen::after {
+  content: "";
+  display: block;
+  height: 42px;
 }
 </style>
 
@@ -175,7 +231,14 @@ body { touch-action: pan-y; }
 <script>
 const stack=['home'];let favorites=JSON.parse(localStorage.getItem('sportos-favs')||'[]');
 const items=[{name:'Tadej Pogačar',type:'Corredor',icon:'🚴',screen:'pogacar'},{name:'Tour de Francia',type:'Competición',icon:'🟡',screen:'stage'},{name:'Etapa 17 · La Plagne',type:'Evento',icon:'📈',screen:'stage'},{name:'Lamine Yamal',type:'Jugador',icon:'⚽',screen:'lamine'},{name:'FC Barcelona',type:'Equipo',icon:'🔵',screen:'football'},{name:'Ciclismo',type:'Deporte',icon:'🚴',screen:'cycling'}];
-function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');window.scrollTo(0,0)}
+function show(id){
+      document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));
+      const target=document.getElementById(id);
+      target.classList.remove('hidden');
+      document.documentElement.style.overflowY='scroll';
+      document.body.style.overflowY='visible';
+      requestAnimationFrame(()=>window.scrollTo({top:0,left:0,behavior:'auto'}));
+    }
 function openScreen(id){stack.push(id);show(id)}function goBack(){if(stack.length>1)stack.pop();show(stack[stack.length-1])}
 function navTo(id,el){stack.length=0;stack.push(id);show(id);document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));el.classList.add('active');if(id==='favorites')renderFavs()}
 function renderSearch(q=''){const t=q.toLowerCase().trim(),list=t?items.filter(i=>(i.name+' '+i.type).toLowerCase().includes(t)):items;document.getElementById('searchResults').innerHTML=list.map(i=>`<div class="row" onclick="openScreen('${i.screen}')"><div class="row-icon">${i.icon}</div><div class="grow"><strong>${i.name}</strong><br><small>${i.type}</small></div><span>›</span></div>`).join('')}
