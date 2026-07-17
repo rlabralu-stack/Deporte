@@ -141,6 +141,54 @@ button,input{font:inherit}button{cursor:pointer}
 }
 </style>
 
+
+<style id="entity-directory-screens">
+.directory-actions {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+.directory-action {
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:16px;
+  background:linear-gradient(145deg,#151e29,#0f161f);
+  color:#fff;
+  padding:14px;
+  text-align:left;
+}
+.directory-action i {
+  width:38px;height:38px;border-radius:11px;
+  background:#202b36;display:grid;place-items:center;
+  font-style:normal;margin-bottom:12px;
+}
+.directory-action strong { display:block; font-size:15px; }
+.directory-action small { display:block; color:var(--muted); margin-top:4px; }
+.filter-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;
+}
+.filter-chip {
+  border:1px solid #2a3542;
+  background:#131b25;
+  color:#c5ccd4;
+  border-radius:999px;
+  padding:9px 8px;
+  text-align:center;
+  font-size:12px;
+}
+.filter-chip.active {
+  background:var(--purple);
+  border-color:var(--purple);
+  color:#fff;
+  font-weight:800;
+}
+@media(max-width:380px){
+  .directory-actions{grid-template-columns:1fr;}
+  .filter-grid{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+
 </head>
 <body>
 <div class="app">
@@ -171,17 +219,8 @@ button,input{font:inherit}button{cursor:pointer}
 <section class="section"><div class="section-head"><div><h2>No te lo pierdas</h2><div class="sub">Vídeos y momentos clave</div></div><button class="link">Ver todo</button></div><div class="video-grid"><article class="video-card card"><div class="video-thumb"></div><div class="copy"><strong>El ataque de Pogačar</strong><small>Etapa 16 · 05:32</small></div></article><article class="video-card card"><div class="video-thumb"></div><div class="copy"><strong>Resumen de la etapa</strong><small>Tour de Francia · 04:16</small></div></article></div></section>
 <section class="section"><div class="section-head"><div><h2>Calendario vivo</h2><div class="sub">Lo próximo en ciclismo</div></div></div><div class="schedule"><div class="schedule-row"><strong>HOY</strong><span>Tour · Etapa 17</span><span class="status live">DIRECTO</span></div><div class="schedule-row"><strong>MAÑANA</strong><span>Tour · Etapa 18</span><span>182 km</span></div><div class="schedule-row"><strong>SÁBADO</strong><span>Clásica San Sebastián</span><span>WorldTour</span></div></div></section>
 
-<section class="section"><div class="section-head"><div><h2>Directorio de corredores</h2><div class="sub">Más nombres para explorar</div></div><button class="link">Ver todos</button></div><div class="directory-grid">
-<div class="person-card" data-open="pogacar"><div class="avatar-mini">🚴</div><strong>Tadej Pogačar</strong><small>UAE · Escalador · Forma 98</small></div>
-<div class="person-card"><div class="avatar-mini">🚴</div><strong>Jonas Vingegaard</strong><small>Visma · Escalador · Forma 94</small></div>
-<div class="person-card"><div class="avatar-mini">🚴</div><strong>Remco Evenepoel</strong><small>Soudal · Contrarreloj · Forma 91</small></div>
-<div class="person-card"><div class="avatar-mini">🚴</div><strong>Mathieu van der Poel</strong><small>Alpecin · Clásicas · Forma 89</small></div>
-<div class="person-card"><div class="avatar-mini">🚴</div><strong>Primož Roglič</strong><small>Red Bull · Vueltas · Forma 87</small></div>
-<div class="person-card"><div class="avatar-mini">🚴</div><strong>Wout van Aert</strong><small>Visma · Todoterreno · Forma 88</small></div>
-<div class="person-card"><div class="avatar-mini">🚴</div><strong>Juan Ayuso</strong><small>UAE · Escalador · Forma 84</small></div>
-<div class="person-card"><div class="avatar-mini">🚴</div><strong>Tom Pidcock</strong><small>Q36.5 · Clásicas · Forma 83</small></div>
-</div></section>
-<section class="section"><div class="section-head"><div><h2>Equipos</h2><div class="sub">Plantillas y estado de forma</div></div></div><div class="directory-grid">
+
+<section class="section"><div class="section-head"><div><h2>Explorar ciclismo</h2><div class="sub">Corredores, equipos y rankings</div></div></div><div class="directory-actions"><button class="directory-action" data-open="cycling-riders"><i>🚴</i><strong>Corredores</strong><small>Ranking, especialidad y forma</small></button><button class="directory-action"><i>👥</i><strong>Equipos</strong><small>Plantillas y resultados</small></button></div></section><section class="section"><div class="section-head"><div><h2>Equipos</h2><div class="sub">Plantillas y estado de forma</div></div></div><div class="directory-grid">
 <div class="team-card"><strong>UAE Team Emirates</strong><small>Pogačar · Ayuso · Almeida</small></div>
 <div class="team-card"><strong>Visma Lease a Bike</strong><small>Vingegaard · Van Aert</small></div>
 <div class="team-card"><strong>Soudal Quick-Step</strong><small>Evenepoel · Landa</small></div>
@@ -189,24 +228,15 @@ button,input{font:inherit}button{cursor:pointer}
 </div></section>
 </main>
 
-<main id="football" class="screen hidden"><div class="backrow"><button class="back" data-back>←</button><h2>Fútbol</h2></div><div class="hero card" style="background:linear-gradient(145deg,#17372a,#101914 60%,#0a2c18)"><div class="kicker" style="color:var(--green)">En directo ahora</div><h1>Barcelona 2 · 1 Real Madrid</h1><p>78' · Pedri y Gündogan dan ventaja al Barça.</p><div class="actions"><button class="btn primary" style="background:var(--green)" data-open="match">Ver partido</button></div></div><section class="section"><div class="section-head"><div><h2>Jugadores destacados</h2><div class="sub">Forma y rendimiento</div></div></div><div class="event-list"><article class="event card" data-open="lamine"><div>⚽</div><div><strong>Lamine Yamal</strong><small>Forma 92 · 13 goles · 17 asistencias</small></div><span>›</span></article><article class="event card"><div>⚽</div><div><strong>Kylian Mbappé</strong><small>Forma 91 · 18 goles</small></div><span>›</span></article></div></section>
+<main id="football" class="screen hidden"><div class="backrow"><button class="back" data-back>←</button><h2>Fútbol</h2></div><div class="hero card" style="background:linear-gradient(145deg,#17372a,#101914 60%,#0a2c18)"><div class="kicker" style="color:var(--green)">En directo ahora</div><h1>Barcelona 2 · 1 Real Madrid</h1><p>78' · Pedri y Gündogan dan ventaja al Barça.</p><div class="actions"><button class="btn primary" style="background:var(--green)" data-open="match">Ver partido</button></div></div>
+<section class="section"><div class="section-head"><div><h2>Jugadores destacados</h2><div class="sub">Forma y rendimiento</div></div><button class="link" data-open="football-players">Ver jugadores</button></div><div class="event-list"><article class="event card" data-open="lamine"><div>⚽</div><div><strong>Lamine Yamal</strong><small>Forma 92 · 13 goles · 17 asistencias</small></div><span>›</span></article><article class="event card"><div>⚽</div><div><strong>Kylian Mbappé</strong><small>Forma 91 · 18 goles</small></div><span>›</span></article></div></section>
+
 <section class="section"><div class="section-head"><div><h2>Equipos en mejor forma</h2><div class="sub">Últimos cinco partidos</div></div></div><div class="event-list"><article class="event card"><div>1</div><div><strong>Manchester City</strong><small>5 victorias · Forma 9,2</small></div><span>›</span></article><article class="event card"><div>2</div><div><strong>Barcelona</strong><small>4 victorias · Forma 8,7</small></div><span>›</span></article><article class="event card"><div>3</div><div><strong>Real Madrid</strong><small>Forma 8,1</small></div><span>›</span></article></div></section>
 <section class="section"><div class="section-head"><div><h2>Competiciones principales</h2><div class="sub">Ligas y torneos</div></div><button class="link">Ver todas</button></div><div class="sports"><button class="sport"><i>🇪🇸</i><strong>LaLiga</strong><small>España</small></button><button class="sport"><i>⭐</i><strong>Champions</strong><small>Europa</small></button><button class="sport"><i>🏴</i><strong>Premier</strong><small>Inglaterra</small></button><button class="sport"><i>🇮🇹</i><strong>Serie A</strong><small>Italia</small></button><button class="sport"><i>🇩🇪</i><strong>Bundesliga</strong><small>Alemania</small></button><button class="sport"><i>＋</i><strong>Más</strong><small>Explorar</small></button></div></section>
 <section class="section"><div class="section-head"><div><h2>Noticias destacadas</h2><div class="sub">Solo lo relevante</div></div></div><div class="news-list"><div class="news-item"><div><strong>Lamine renueva hasta 2030</strong><small>Hace 1 h</small></div><span>›</span></div><div class="news-item"><div><strong>Haaland llega en su mejor momento</strong><small>Hace 3 h</small></div><span>›</span></div></div></section>
 
-<section class="section"><div class="section-head"><div><h2>Directorio de futbolistas</h2><div class="sub">Jugadores destacados por posición</div></div><button class="link">Ver todos</button></div><div class="directory-grid">
-<div class="person-card" data-open="lamine"><div class="avatar-mini">⚽</div><strong>Lamine Yamal</strong><small>Barcelona · Extremo · Forma 92</small></div>
-<div class="person-card"><div class="avatar-mini">⚽</div><strong>Kylian Mbappé</strong><small>Real Madrid · Delantero · Forma 91</small></div>
-<div class="person-card"><div class="avatar-mini">⚽</div><strong>Erling Haaland</strong><small>Manchester City · Delantero · Forma 93</small></div>
-<div class="person-card"><div class="avatar-mini">⚽</div><strong>Jude Bellingham</strong><small>Real Madrid · Centrocampista · Forma 88</small></div>
-<div class="person-card"><div class="avatar-mini">⚽</div><strong>Pedri</strong><small>Barcelona · Centrocampista · Forma 86</small></div>
-<div class="person-card"><div class="avatar-mini">⚽</div><strong>Mohamed Salah</strong><small>Liverpool · Extremo · Forma 89</small></div>
-<div class="person-card"><div class="avatar-mini">⚽</div><strong>Vinícius Jr.</strong><small>Real Madrid · Extremo · Forma 90</small></div>
-<div class="person-card"><div class="avatar-mini">⚽</div><strong>Rodri</strong><small>Manchester City · Pivote · Forma 85</small></div>
-<div class="person-card"><div class="avatar-mini">⚽</div><strong>Alexia Putellas</strong><small>Barcelona · Centrocampista · Forma 91</small></div>
-<div class="person-card"><div class="avatar-mini">⚽</div><strong>Aitana Bonmatí</strong><small>Barcelona · Centrocampista · Forma 94</small></div>
-</div></section>
-<section class="section"><div class="section-head"><div><h2>Equipos destacados</h2><div class="sub">Plantillas, forma y próximos partidos</div></div></div><div class="directory-grid">
+
+<section class="section"><div class="section-head"><div><h2>Explorar fútbol</h2><div class="sub">Jugadores, equipos y rankings</div></div></div><div class="directory-actions"><button class="directory-action" data-open="football-players"><i>⚽</i><strong>Jugadores</strong><small>Posición, forma y estadísticas</small></button><button class="directory-action"><i>🛡</i><strong>Equipos</strong><small>Plantillas y calendario</small></button></div></section><section class="section"><div class="section-head"><div><h2>Equipos destacados</h2><div class="sub">Plantillas, forma y próximos partidos</div></div></div><div class="directory-grid">
 <div class="team-card"><strong>FC Barcelona</strong><small>LaLiga · Forma 8,7</small></div>
 <div class="team-card"><strong>Real Madrid</strong><small>LaLiga · Forma 8,5</small></div>
 <div class="team-card"><strong>Manchester City</strong><small>Premier · Forma 9,2</small></div>
@@ -240,6 +270,9 @@ button,input{font:inherit}button{cursor:pointer}
 <div class="person-card"><div class="avatar-mini">🏀</div><strong>Facundo Campazzo</strong><small>Real Madrid · Base · Valoración 24</small></div>
 <div class="person-card"><div class="avatar-mini">🏀</div><strong>Kevin Punter</strong><small>Barça · Escolta · Valoración 22</small></div>
 </div></section>
+
+<section class="section"><div class="section-head"><div><h2>Jugadores destacados</h2><div class="sub">Valoración y rendimiento reciente</div></div><button class="link" data-open="basketball-players">Ver jugadores</button></div><div class="event-list"><article class="event card"><div>🏀</div><div><strong>LeBron James</strong><small>Valoración 31</small></div><span>›</span></article><article class="event card"><div>🏀</div><div><strong>Nikola Jokić</strong><small>Valoración 36</small></div><span>›</span></article></div></section>
+<section class="section"><div class="section-head"><div><h2>Explorar baloncesto</h2><div class="sub">Jugadores, equipos y rankings</div></div></div><div class="directory-actions"><button class="directory-action" data-open="basketball-players"><i>🏀</i><strong>Jugadores</strong><small>NBA, ACB y Euroliga</small></button><button class="directory-action"><i>👥</i><strong>Equipos</strong><small>Plantillas y resultados</small></button></div></section>
 <section class="section"><div class="section-head"><div><h2>Competiciones</h2><div class="sub">Ligas y torneos principales</div></div></div><div class="sports">
 <button class="sport"><i>🇺🇸</i><strong>NBA</strong><small>Estados Unidos</small></button>
 <button class="sport"><i>🇪🇸</i><strong>ACB</strong><small>España</small></button>
@@ -263,6 +296,60 @@ button,input{font:inherit}button{cursor:pointer}
 <div class="card panel"><div class="panel-head"><span class="panel-title">Últimos tres partidos</span></div><div class="list"><div class="line"><span>LeBron</span><strong>31 · 29 · 27</strong></div><div class="line"><span>Tatum</span><strong>28 · 32 · 24</strong></div></div></div>
 <div class="card panel"><div class="panel-head"><span class="panel-title">Dónde verlo</span></div><div class="metrics"><div class="metric"><b>21:30</b><small>Hora</small></div><div class="metric"><b>League Pass</b><small>Canal</small></div><div class="metric"><b>21:00</b><small>Previa</small></div></div></div>
 </div>
+</main>
+
+
+<main id="cycling-riders" class="screen hidden">
+<div class="backrow"><button class="back" data-back>←</button><h2>Corredores</h2></div>
+<input class="search" placeholder="Buscar corredor, equipo o país…">
+<section class="section"><div class="section-head"><div><h2>Explorar por especialidad</h2><div class="sub">Filtra el tipo de corredor</div></div></div><div class="filter-grid"><button class="filter-chip active">Todos</button><button class="filter-chip">Escaladores</button><button class="filter-chip">Sprinters</button><button class="filter-chip">Clásicas</button><button class="filter-chip">Contrarreloj</button><button class="filter-chip">Jóvenes</button></div></section>
+<section class="section"><div class="section-head"><div><h2>Destacados</h2><div class="sub">Estado de forma y ranking</div></div></div><div class="directory-grid">
+<div class="person-card" data-open="pogacar"><div class="avatar-mini">🚴</div><strong>Tadej Pogačar</strong><small>UAE · Escalador · Forma 98</small></div>
+<div class="person-card"><div class="avatar-mini">🚴</div><strong>Jonas Vingegaard</strong><small>Visma · Escalador · Forma 94</small></div>
+<div class="person-card"><div class="avatar-mini">🚴</div><strong>Remco Evenepoel</strong><small>Soudal · Contrarreloj · Forma 91</small></div>
+<div class="person-card"><div class="avatar-mini">🚴</div><strong>Mathieu van der Poel</strong><small>Alpecin · Clásicas · Forma 89</small></div>
+<div class="person-card"><div class="avatar-mini">🚴</div><strong>Primož Roglič</strong><small>Red Bull · Vueltas · Forma 87</small></div>
+<div class="person-card"><div class="avatar-mini">🚴</div><strong>Wout van Aert</strong><small>Visma · Todoterreno · Forma 88</small></div>
+<div class="person-card"><div class="avatar-mini">🚴</div><strong>Juan Ayuso</strong><small>UAE · Escalador · Forma 84</small></div>
+<div class="person-card"><div class="avatar-mini">🚴</div><strong>Tom Pidcock</strong><small>Q36.5 · Clásicas · Forma 83</small></div>
+</div></section>
+<section class="section"><div class="section-head"><div><h2>Ranking UCI</h2><div class="sub">Top de la temporada</div></div></div><div class="event-list"><article class="event card"><div>1</div><div><strong>Pogačar</strong><small>4.891 puntos</small></div><span>›</span></article><article class="event card"><div>2</div><div><strong>Evenepoel</strong><small>3.720 puntos</small></div><span>›</span></article><article class="event card"><div>3</div><div><strong>Vingegaard</strong><small>3.450 puntos</small></div><span>›</span></article></div></section>
+</main>
+
+<main id="football-players" class="screen hidden">
+<div class="backrow"><button class="back" data-back>←</button><h2>Jugadores</h2></div>
+<input class="search" placeholder="Buscar jugador, equipo o competición…">
+<section class="section"><div class="section-head"><div><h2>Explorar por posición</h2><div class="sub">Filtra el tipo de jugador</div></div></div><div class="filter-grid"><button class="filter-chip active">Todos</button><button class="filter-chip">Porteros</button><button class="filter-chip">Defensas</button><button class="filter-chip">Centrocampistas</button><button class="filter-chip">Extremos</button><button class="filter-chip">Delanteros</button></div></section>
+<section class="section"><div class="section-head"><div><h2>Destacados</h2><div class="sub">Forma, goles y asistencias</div></div></div><div class="directory-grid">
+<div class="person-card" data-open="lamine"><div class="avatar-mini">⚽</div><strong>Lamine Yamal</strong><small>Barcelona · Extremo · Forma 92</small></div>
+<div class="person-card"><div class="avatar-mini">⚽</div><strong>Kylian Mbappé</strong><small>Real Madrid · Delantero · Forma 91</small></div>
+<div class="person-card"><div class="avatar-mini">⚽</div><strong>Erling Haaland</strong><small>Manchester City · Delantero · Forma 93</small></div>
+<div class="person-card"><div class="avatar-mini">⚽</div><strong>Jude Bellingham</strong><small>Real Madrid · Centrocampista · Forma 88</small></div>
+<div class="person-card"><div class="avatar-mini">⚽</div><strong>Pedri</strong><small>Barcelona · Centrocampista · Forma 86</small></div>
+<div class="person-card"><div class="avatar-mini">⚽</div><strong>Mohamed Salah</strong><small>Liverpool · Extremo · Forma 89</small></div>
+<div class="person-card"><div class="avatar-mini">⚽</div><strong>Vinícius Jr.</strong><small>Real Madrid · Extremo · Forma 90</small></div>
+<div class="person-card"><div class="avatar-mini">⚽</div><strong>Rodri</strong><small>Manchester City · Pivote · Forma 85</small></div>
+<div class="person-card"><div class="avatar-mini">⚽</div><strong>Alexia Putellas</strong><small>Barcelona · Centrocampista · Forma 91</small></div>
+<div class="person-card"><div class="avatar-mini">⚽</div><strong>Aitana Bonmatí</strong><small>Barcelona · Centrocampista · Forma 94</small></div>
+</div></section>
+<section class="section"><div class="section-head"><div><h2>Rankings</h2><div class="sub">Temporada actual</div></div></div><div class="directory-actions"><button class="directory-action"><i>⚽</i><strong>Goleadores</strong><small>Máximos goleadores</small></button><button class="directory-action"><i>🎯</i><strong>Asistencias</strong><small>Máximos asistentes</small></button><button class="directory-action"><i>📈</i><strong>Estado de forma</strong><small>Últimos cinco partidos</small></button><button class="directory-action"><i>⭐</i><strong>Valoración</strong><small>Mejores notas</small></button></div></section>
+</main>
+
+<main id="basketball-players" class="screen hidden">
+<div class="backrow"><button class="back" data-back>←</button><h2>Jugadores de baloncesto</h2></div>
+<input class="search" placeholder="Buscar jugador, equipo o competición…">
+<section class="section"><div class="section-head"><div><h2>Explorar por posición</h2><div class="sub">Bases, escoltas, aleros y pívots</div></div></div><div class="filter-grid"><button class="filter-chip active">Todos</button><button class="filter-chip">Bases</button><button class="filter-chip">Escoltas</button><button class="filter-chip">Aleros</button><button class="filter-chip">Ala-pívots</button><button class="filter-chip">Pívots</button></div></section>
+<section class="section"><div class="section-head"><div><h2>Destacados</h2><div class="sub">Valoración y últimos partidos</div></div></div><div class="directory-grid">
+<div class="person-card"><div class="avatar-mini">🏀</div><strong>LeBron James</strong><small>Lakers · Alero · Valoración 31</small></div>
+<div class="person-card"><div class="avatar-mini">🏀</div><strong>Luka Dončić</strong><small>Mavericks · Base · Valoración 34</small></div>
+<div class="person-card"><div class="avatar-mini">🏀</div><strong>Nikola Jokić</strong><small>Nuggets · Pívot · Valoración 36</small></div>
+<div class="person-card"><div class="avatar-mini">🏀</div><strong>Stephen Curry</strong><small>Warriors · Base · Valoración 29</small></div>
+<div class="person-card"><div class="avatar-mini">🏀</div><strong>Giannis Antetokounmpo</strong><small>Bucks · Ala-pívot · Valoración 33</small></div>
+<div class="person-card"><div class="avatar-mini">🏀</div><strong>Jayson Tatum</strong><small>Celtics · Alero · Valoración 28</small></div>
+<div class="person-card"><div class="avatar-mini">🏀</div><strong>Facundo Campazzo</strong><small>Real Madrid · Base · Valoración 24</small></div>
+<div class="person-card"><div class="avatar-mini">🏀</div><strong>Kevin Punter</strong><small>Barça · Escolta · Valoración 22</small></div>
+</div></section>
+<section class="section"><div class="section-head"><div><h2>Rankings</h2><div class="sub">Temporada actual</div></div></div><div class="directory-actions"><button class="directory-action"><i>⭐</i><strong>Valoración</strong><small>Mejores medias</small></button><button class="directory-action"><i>🏀</i><strong>Puntos</strong><small>Máximos anotadores</small></button><button class="directory-action"><i>👐</i><strong>Rebotes</strong><small>Mejores reboteadores</small></button><button class="directory-action"><i>🎯</i><strong>Asistencias</strong><small>Mejores pasadores</small></button></div></section>
 </main>
 
 <main id="stage" class="screen hidden"><div class="backrow"><button class="back" data-back>←</button><h2>Etapa 17</h2></div><div class="card panel"><div class="panel-head"><span class="status live">EN DIRECTO</span><span class="sub">Actualizado 15:42</span></div><h1>Albertville → La Plagne</h1><p class="sub">165 km · +4.800 m · Alta montaña</p><div class="stage-profile"><div class="mountain-shape"></div></div><div class="stats4"><div class="stat"><b>5★</b><small>Dificultad</small></div><div class="stat"><b>4</b><small>Puertos</small></div><div class="stat"><b>18 °C</b><small>Clima</small></div><div class="stat"><b>17:25</b><small>Meta</small></div></div></div><div class="dashboard section"><div class="card panel"><div class="panel-head"><span class="panel-title">Ahora</span><span class="status live">Km 92,4</span></div><div class="metrics"><div class="metric"><b>+2:14</b><small>Escapada</small></div><div class="metric"><b>20,1 km</b><small>Próximo puerto</small></div><div class="metric"><b>RTVE</b><small>Dónde verlo</small></div></div></div><div class="card panel"><div class="panel-head"><span class="panel-title">Clasificación virtual</span><button class="link">Ver toda</button></div><div class="list"><div class="line"><span>1. Pogačar</span><strong>72h 10'24"</strong></div><div class="line"><span>2. Vingegaard</span><strong>+1'06"</strong></div><div class="line"><span>3. Evenepoel</span><strong>+2'37"</strong></div></div></div><div class="card panel"><div class="panel-head"><span class="panel-title">Favoritos</span></div><div class="metrics"><div class="metric"><b>92%</b><small>Pogačar</small></div><div class="metric"><b>78%</b><small>Vingegaard</small></div><div class="metric"><b>65%</b><small>Evenepoel</small></div></div></div>
@@ -314,7 +401,10 @@ const stack=['home'];const items=[
 {name:'Baloncesto',type:'Deporte',screen:'basketball',icon:'🏀'},
 {name:'Lakers · Celtics',type:'Partido',screen:'basketball-match',icon:'🏀'},
 {name:'LeBron James',type:'Jugador',screen:'basketball',icon:'🏀'},
-{name:'Luka Dončić',type:'Jugador',screen:'basketball',icon:'🏀'}
+{name:'Luka Dončić',type:'Jugador',screen:'basketball-players',icon:'🏀'},
+{name:'Corredores',type:'Directorio',screen:'cycling-riders',icon:'🚴'},
+{name:'Jugadores de fútbol',type:'Directorio',screen:'football-players',icon:'⚽'},
+{name:'Jugadores de baloncesto',type:'Directorio',screen:'basketball-players',icon:'🏀'}
 ];
 function show(id,push=true){document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');if(push)stack.push(id);window.scrollTo(0,0)}
 document.addEventListener('click',e=>{const o=e.target.closest('[data-open]');if(o)show(o.dataset.open);const b=e.target.closest('[data-back]');if(b){if(stack.length>1)stack.pop();show(stack[stack.length-1]||'home',false)}const n=e.target.closest('[data-nav]');if(n){stack.length=0;stack.push(n.dataset.nav);show(n.dataset.nav,false);document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));n.classList.add('active')}});
