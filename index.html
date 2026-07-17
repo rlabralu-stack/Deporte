@@ -120,50 +120,68 @@ main,
 </style>
 
 
-<style id="horizontal-scroll-final">
+<style id="no-horizontal-scroll">
 .h-scroll,
 .media-scroll,
 .tabs,
 .related {
-  display: flex !important;
-  flex-wrap: nowrap !important;
+  display: grid !important;
   width: 100% !important;
   max-width: 100% !important;
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  -webkit-overflow-scrolling: touch !important;
-  overscroll-behavior-x: contain !important;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  touch-action: pan-x pan-y !important;
-  cursor: grab;
+  overflow: visible !important;
+  touch-action: auto !important;
 }
-.h-scroll::-webkit-scrollbar,
-.media-scroll::-webkit-scrollbar,
-.tabs::-webkit-scrollbar,
-.related::-webkit-scrollbar {
-  display: none !important;
+
+.h-scroll {
+  grid-template-columns: 1fr !important;
+  gap: 10px !important;
 }
+
+.media-scroll {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+}
+
+.tabs {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+}
+
+.related {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 9px !important;
+}
+
 .h-scroll > *,
 .media-scroll > *,
 .tabs > *,
 .related > * {
-  flex: 0 0 auto !important;
-}
-.h-scroll > * { width: 86% !important; }
-.media-scroll > * { width: 72% !important; }
-.tabs > .tab {
   width: auto !important;
-  white-space: nowrap !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
 }
-.related > * { min-width: 110px !important; }
-.h-scroll.is-dragging,
-.media-scroll.is-dragging,
-.tabs.is-dragging,
-.related.is-dragging {
-  cursor: grabbing;
-  scroll-behavior: auto;
-  user-select: none;
+
+.tabs > .tab {
+  flex: 1 1 auto !important;
+  white-space: normal !important;
+  text-align: center !important;
+}
+
+.media {
+  min-width: 0 !important;
+}
+
+.media-copy strong,
+.media-copy small {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 380px) {
+  .media-scroll,
+  .related {
+    grid-template-columns: 1fr !important;
+  }
 }
 </style>
 
@@ -265,57 +283,4 @@ function toggleFav(name){favorites=favorites.includes(name)?favorites.filter(x=>
 function renderFavs(){document.getElementById('favList').innerHTML=favorites.length?favorites.map(n=>`<div class="row"><div class="row-icon">♥</div><div class="grow"><strong>${n}</strong><br><small>Favorito</small></div><button class="link" onclick="toggleFav('${n}');renderFavs()">Quitar</button></div>`).join(''):'<div class="card panel"><strong>Aún no tienes favoritos.</strong><p style="color:var(--muted)">Añade deportistas o competiciones desde sus fichas.</p></div>'}
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.opacity=1;setTimeout(()=>t.style.opacity=0,1600)}renderSearch();renderFavs();
 </script>
-
-<script>
-(function () {
-  function enableHorizontalDrag(scroller) {
-    let startX = 0;
-    let startY = 0;
-    let startScrollLeft = 0;
-    let dragging = false;
-    let horizontalIntent = false;
-
-    scroller.addEventListener('touchstart', function (event) {
-      if (!event.touches || event.touches.length !== 1) return;
-      startX = event.touches[0].clientX;
-      startY = event.touches[0].clientY;
-      startScrollLeft = scroller.scrollLeft;
-      dragging = true;
-      horizontalIntent = false;
-    }, { passive: true });
-
-    scroller.addEventListener('touchmove', function (event) {
-      if (!dragging || !event.touches || event.touches.length !== 1) return;
-      const dx = event.touches[0].clientX - startX;
-      const dy = event.touches[0].clientY - startY;
-      if (!horizontalIntent && Math.abs(dx) > 7) {
-        horizontalIntent = Math.abs(dx) > Math.abs(dy);
-      }
-      if (horizontalIntent) {
-        event.preventDefault();
-        scroller.scrollLeft = startScrollLeft - dx;
-      }
-    }, { passive: false });
-
-    function stopTouch() {
-      dragging = false;
-      horizontalIntent = false;
-    }
-    scroller.addEventListener('touchend', stopTouch, { passive: true });
-    scroller.addEventListener('touchcancel', stopTouch, { passive: true });
-  }
-
-  function initializeHorizontalScroll() {
-    document.querySelectorAll('.h-scroll, .media-scroll, .tabs, .related')
-      .forEach(enableHorizontalDrag);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeHorizontalScroll);
-  } else {
-    initializeHorizontalScroll();
-  }
-})();
-</script>
-
 </body></html>
