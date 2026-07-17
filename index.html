@@ -33,49 +33,52 @@ button,input{font:inherit}button{cursor:pointer}.app{width:min(100%,470px);min-h
 @media(min-width:720px){body{padding:24px}.app{border-radius:28px;box-shadow:0 28px 100px rgba(0,0,0,.55)}}
 </style>
 
-<style id="screen-scroll-layout">
+<style id="plain-document-flow">
 html, body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  overflow: hidden !important;
-}
-
-body {
-  padding: 0 !important;
-}
-
-.app {
-  width: min(100%, 470px) !important;
-  height: 100vh !important;
-  height: 100dvh !important;
-  min-height: 0 !important;
-  max-height: 100dvh !important;
-  margin: 0 auto !important;
-  padding-bottom: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  overflow: hidden !important;
-}
-
-.topbar {
-  position: relative !important;
-  top: auto !important;
-  flex: 0 0 auto !important;
-  z-index: 20 !important;
-}
-
-.screen {
-  flex: 1 1 auto !important;
-  min-height: 0 !important;
+  width: 100% !important;
+  min-height: 100% !important;
   height: auto !important;
-  max-height: none !important;
+  margin: 0 !important;
   overflow-x: hidden !important;
   overflow-y: auto !important;
   -webkit-overflow-scrolling: touch !important;
-  overscroll-behavior-y: contain;
-  touch-action: pan-y !important;
-  padding-bottom: calc(36px + env(safe-area-inset-bottom)) !important;
+}
+
+body {
+  position: static !important;
+  touch-action: auto !important;
+}
+
+.app {
+  position: static !important;
+  width: min(100%, 470px) !important;
+  min-height: 100vh !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: 0 auto !important;
+  padding-bottom: 24px !important;
+  overflow: visible !important;
+  contain: none !important;
+  transform: none !important;
+}
+
+.topbar {
+  position: static !important;
+  top: auto !important;
+}
+
+main,
+.screen,
+.content {
+  position: static !important;
+  display: block;
+  width: 100% !important;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  transform: none !important;
+  touch-action: auto !important;
 }
 
 .screen.hidden {
@@ -83,42 +86,52 @@ body {
 }
 
 .bottom {
-  position: relative !important;
+  position: static !important;
   left: auto !important;
   right: auto !important;
   bottom: auto !important;
   transform: none !important;
   width: 100% !important;
-  flex: 0 0 auto !important;
-  z-index: 30 !important;
+  margin-top: 24px !important;
 }
 
 .h-scroll,
 .media-scroll,
 .tabs,
 .related {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
   -webkit-overflow-scrolling: touch !important;
+  touch-action: auto !important;
 }
 
-@media (min-width: 720px) {
-  body {
-    padding: 24px 0 !important;
-  }
+.profile-cover,
+.card,
+.section,
+.dashboard-grid {
+  max-height: none !important;
+}
 
-  .app {
-    height: calc(100dvh - 48px) !important;
-    max-height: calc(100dvh - 48px) !important;
-    border-radius: 28px !important;
-  }
+.scroll-test-badge {
+  position: fixed;
+  right: 8px;
+  top: 8px;
+  z-index: 99999;
+  background: #ffdf24;
+  color: #111;
+  padding: 5px 8px;
+  border-radius: 8px;
+  font: 700 11px/1 system-ui, sans-serif;
+  pointer-events: none;
+}
 
-  .bottom {
-    border-radius: 0 0 28px 28px !important;
-  }
+@media (min-width:720px) {
+  body { padding: 24px 0 !important; }
 }
 </style>
 
 </head>
-<body>
+<body><div class="scroll-test-badge">SCROLL TEST v6</div>
 <div class="app">
 <header class="topbar"><div><div class="eyebrow">Buenos días, Rafa</div><div class="brandline">Tu deporte, a tu ritmo</div></div><div class="top-actions"><button class="icon-btn" onclick="navTo('search',document.querySelector('[data-target=search]'))">⌕</button><div class="avatar">R</div></div></header>
 
@@ -197,12 +210,16 @@ body {
 const stack=['home'];let favorites=JSON.parse(localStorage.getItem('sportos-favs')||'[]');
 const items=[{name:'Tadej Pogačar',type:'Corredor',icon:'🚴',screen:'pogacar'},{name:'Tour de Francia',type:'Competición',icon:'🟡',screen:'stage'},{name:'Etapa 17 · La Plagne',type:'Evento',icon:'📈',screen:'stage'},{name:'Lamine Yamal',type:'Jugador',icon:'⚽',screen:'lamine'},{name:'FC Barcelona',type:'Equipo',icon:'🔵',screen:'football'},{name:'Ciclismo',type:'Deporte',icon:'🚴',screen:'cycling'}];
 function show(id){
-      document.querySelectorAll('.screen').forEach(function(s){
-        s.classList.add('hidden');
+      document.querySelectorAll('.screen').forEach(function(screen){
+        screen.classList.add('hidden');
       });
       var target = document.getElementById(id);
       target.classList.remove('hidden');
-      target.scrollTop = 0;
+      setTimeout(function(){
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        window.scrollTo(0,0);
+      }, 0);
     }
 function openScreen(id){stack.push(id);show(id)}function goBack(){if(stack.length>1)stack.pop();show(stack[stack.length-1])}
 function navTo(id,el){stack.length=0;stack.push(id);show(id);document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));el.classList.add('active');if(id==='favorites')renderFavs()}
