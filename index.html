@@ -31,7 +31,7 @@ button,input{font:inherit}button{cursor:pointer}.app{width:min(100%,470px);min-h
 .dashboard-grid{display:grid;gap:10px}.panel{padding:14px}.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}.panel-title{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.04em}.form-score{display:flex;align-items:center;gap:12px}.score-ring{width:70px;height:70px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--green) 0 92%,#26323e 92% 100%);position:relative}.score-ring:after{content:"";position:absolute;width:54px;height:54px;border-radius:50%;background:#101720}.score-ring b{z-index:2;font-size:22px;color:#8df29f}.form-bars{flex:1}.bar{height:9px;border-radius:999px;background:#23303b;overflow:hidden;margin-top:7px}.bar i{display:block;height:100%;background:linear-gradient(90deg,#4dbb63,#9bf071)}.results{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.result-dot{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:900;background:#65cf6d;color:#081208}.result-dot.silver{background:#8b97a4;color:#0a1016}
 .now-card{display:grid;grid-template-columns:1.15fr .85fr;gap:10px}.now-info{padding:14px}.now-visual{border-radius:14px;background:linear-gradient(160deg,#d9b513,#5c4a0b);min-height:160px;background-size:cover;background-position:center}.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.metric{padding:11px;border-radius:13px;background:#111923;text-align:center}.metric b{display:block;font-size:18px}.metric small{font-size:9px;color:var(--muted)}.career-list{display:grid;gap:8px}.career-item{display:flex;justify-content:space-between;gap:10px;padding-bottom:8px;border-bottom:1px solid #202b36}.career-item:last-child{border-bottom:0}.career-item small{color:var(--muted)}.related{display:flex;gap:9px;overflow-x:auto}.related::-webkit-scrollbar{display:none}.related-card{min-width:110px;background:#111923;border-radius:13px;padding:10px;text-align:center}.related-avatar{width:52px;height:52px;border-radius:50%;margin:auto;background:#25313c;display:grid;place-items:center;font-size:24px}
 .stage-profile{height:165px;border:1px solid #2a3542;border-radius:16px;background:#0d141b;position:relative;overflow:hidden}.mountains{position:absolute;inset:22px 9px 15px;background:linear-gradient(90deg,#e4b900,#ffe01d);clip-path:polygon(0 84%,8% 78%,17% 64%,26% 71%,37% 38%,48% 60%,58% 50%,69% 12%,81% 54%,91% 34%,100% 8%,100% 100%,0 100%)}.classification{display:grid;gap:8px}.rank-row{display:grid;grid-template-columns:24px 1fr auto;gap:8px;padding:9px 0;border-bottom:1px solid #202b36}.rank-row:last-child{border-bottom:0}
-@media(min-width:720px){body{padding:24px}.app{border-radius:28px;overflow:hidden;box-shadow:0 28px 100px rgba(0,0,0,.55)}.bottom{bottom:24px;border-radius:0 0 28px 28px}}
+@media(min-width:720px){body{padding:24px}.app{border-radius:28px;box-shadow:0 28px 100px rgba(0,0,0,.55)}.bottom{bottom:24px;border-radius:0 0 28px 28px}}
 </style>
 
 
@@ -40,115 +40,91 @@ button,input{font:inherit}button{cursor:pointer}.app{width:min(100%,470px);min-h
 
 
 
-<style id="mobile-scroll-final">
-:root {
-  --bottom-nav-height: 76px;
-}
 
-html {
+
+
+<style id="app-scroll-container">
+html, body {
   width: 100%;
+  height: 100%;
   min-height: 100%;
-  height: auto !important;
-  overflow-x: hidden !important;
-  overflow-y: scroll !important;
-  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  overflow: hidden !important;
 }
 
 body {
-  width: 100%;
-  min-height: 100%;
-  height: auto !important;
-  margin: 0;
-  overflow-x: hidden !important;
-  overflow-y: visible !important;
-  touch-action: auto !important;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: auto;
+  padding: 0 !important;
+  overscroll-behavior: none;
 }
 
 .app {
-  position: relative !important;
   width: min(100%, 470px) !important;
-  min-height: 100vh !important;
-  min-height: 100dvh !important;
-  height: auto !important;
-  max-height: none !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  min-height: 0 !important;
+  max-height: 100dvh !important;
   margin: 0 auto !important;
-  padding-bottom: calc(var(--bottom-nav-height) + 34px + env(safe-area-inset-bottom)) !important;
-  overflow: visible !important;
-  contain: none !important;
-  touch-action: auto !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-y: contain;
+  touch-action: pan-y !important;
+  padding-bottom: calc(112px + env(safe-area-inset-bottom)) !important;
+  scroll-behavior: auto;
 }
 
 main,
 .screen,
 .content {
-  position: relative !important;
   height: auto !important;
   min-height: 0 !important;
   max-height: none !important;
   overflow: visible !important;
-  touch-action: pan-y !important;
 }
 
 .screen.hidden {
   display: none !important;
 }
 
-.profile-cover,
-.card,
-.dashboard-grid,
-.section {
-  max-height: none !important;
-  overflow: visible;
-}
-
-.profile-cover {
-  overflow: hidden !important;
+.content {
+  padding-bottom: 48px !important;
 }
 
 .h-scroll,
 .media-scroll,
 .tabs,
 .related {
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  touch-action: pan-x !important;
-  -webkit-overflow-scrolling: touch;
+  touch-action: auto !important;
+  -webkit-overflow-scrolling: touch !important;
 }
 
 .bottom {
   position: fixed !important;
   left: 50% !important;
-  right: auto !important;
   bottom: 0 !important;
   transform: translateX(-50%) !important;
   width: min(100%, 470px) !important;
-  height: auto !important;
-  z-index: 999 !important;
+  z-index: 9999 !important;
+}
+
+.screen::after {
+  content: "";
+  display: block;
+  height: 60px;
 }
 
 @media (min-width: 720px) {
-  html, body {
-    overflow-y: auto !important;
-  }
   body {
     padding: 24px 0 !important;
   }
   .app {
-    overflow: visible !important;
+    height: calc(100dvh - 48px) !important;
+    max-height: calc(100dvh - 48px) !important;
     border-radius: 28px !important;
   }
   .bottom {
     bottom: 24px !important;
   }
-}
-
-/* Extra room after the final block on every screen. */
-.screen::after {
-  content: "";
-  display: block;
-  height: 42px;
 }
 </style>
 
@@ -235,9 +211,9 @@ function show(id){
       document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));
       const target=document.getElementById(id);
       target.classList.remove('hidden');
-      document.documentElement.style.overflowY='scroll';
-      document.body.style.overflowY='visible';
-      requestAnimationFrame(()=>window.scrollTo({top:0,left:0,behavior:'auto'}));
+      const app=document.querySelector('.app');
+      if(app){ app.scrollTop=0; }
+    }));
     }
 function openScreen(id){stack.push(id);show(id)}function goBack(){if(stack.length>1)stack.pop();show(stack[stack.length-1])}
 function navTo(id,el){stack.length=0;stack.push(id);show(id);document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));el.classList.add('active');if(id==='favorites')renderFavs()}
