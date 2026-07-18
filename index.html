@@ -6,7 +6,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="#070a0f" name="theme-color"/>
-<title>Ralalu Demo 1.2 · revisión 22</title>
+<title>Ralalu Demo 1.2 · revisión 23</title>
 <style>
 :root{
   --bg:#070a0f;--panel:#111923;--panel-2:#17212c;--line:#273341;
@@ -374,6 +374,11 @@ body{background:radial-gradient(circle at 50% -8%,#17263a 0,#0a111b 34%,#060910 
 .story-card,.home-mini-card,.sport-tile,.sport-template-card{box-shadow:0 12px 28px rgba(0,0,0,.17)}
 @media(max-width:380px){.ralalu-wording small{max-width:190px;font-size:7px!important}.ralalu-mark{width:47px;height:42px;flex-basis:47px}.ralalu-r{width:46px;height:40px}.ralalu-wording strong{font-size:22px!important}}
 </style>
+
+<style id="revision23-universal-football-match">
+.match-u{display:grid;gap:12px}.match-u-card{padding:14px;background:linear-gradient(145deg,#151e29,#0d141c);border:1px solid rgba(255,255,255,.09);border-radius:18px}.match-u-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.match-u-title{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:950;text-transform:uppercase;letter-spacing:.04em}.match-u-num{width:25px;height:25px;border-radius:7px;display:grid;place-items:center;background:linear-gradient(135deg,var(--brand-cyan,#46e0f2),var(--brand-purple,#8b5cf6));color:#071019;font-weight:950}.match-u-live{padding:6px 9px;border-radius:999px;background:var(--red);font-size:10px;font-weight:900}.match-score{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;text-align:center}.match-team{display:grid;justify-items:center;gap:7px}.match-team .crest{width:62px;height:70px}.match-score-main b{display:block;font-size:38px;line-height:1}.match-score-main small{display:block;color:var(--muted);font-size:10px;margin-top:5px}.match-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:12px}.match-meta div{padding:9px 5px;text-align:center;background:#0b1118;border-radius:12px}.match-meta b,.match-meta small{display:block}.match-meta small{color:var(--muted);font-size:8px;margin-top:3px}.formation-tabs{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px}.formation-tab{border:1px solid #2a3542;background:#131b25;color:#bdc5ce;border-radius:999px;padding:9px}.formation-tab.active{background:var(--purple);border-color:var(--purple);color:#fff;font-weight:900}.pitch{position:relative;aspect-ratio:2/3;border-radius:16px;overflow:hidden;background:linear-gradient(90deg,rgba(255,255,255,.035) 50%,transparent 50%),linear-gradient(#17653a,#0f4f2d);background-size:50% 100%,100% 100%;border:2px solid #ffffff35}.pitch:before{content:'';position:absolute;inset:7%;border:1px solid #ffffff55;border-radius:2px}.pitch:after{content:'';position:absolute;left:50%;top:7%;bottom:7%;width:1px;background:#ffffff55}.pitch-circle{position:absolute;left:50%;top:50%;width:72px;height:72px;border:1px solid #ffffff55;border-radius:50%;transform:translate(-50%,-50%)}.pitch-lineup{position:absolute;inset:9%;z-index:2}.pitch-player{position:absolute;width:52px;transform:translate(-50%,-50%);text-align:center}.pitch-player i{width:34px;height:34px;margin:auto;border-radius:50%;display:grid;place-items:center;background:#17212c;border:2px solid #fff;color:#fff;font-style:normal;font-size:10px;font-weight:950;box-shadow:0 4px 12px #0008}.pitch-player b{display:block;margin-top:3px;font-size:7px;line-height:1.05;text-shadow:0 1px 3px #000}.pitch-player.home i{background:#174b9a;border-color:#d7a522}.pitch-player.away i{background:#c51f37;border-color:#fff}.lineup-list{display:grid;grid-template-columns:1fr 1fr;gap:8px}.lineup-col{padding:10px;background:#0b1118;border-radius:13px}.lineup-col h4{margin:0 0 8px;font-size:11px}.lineup-person{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid #202b36;font-size:9px}.lineup-person:last-child{border-bottom:0}.lineup-person small{color:var(--muted)}.absence-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.absence{padding:10px;background:#0b1118;border-radius:13px}.absence b,.absence small{display:block}.absence small{color:var(--muted);font-size:9px;margin-top:3px}.stat-duel{display:grid;gap:9px}.stat-duel-row{display:grid;grid-template-columns:40px 1fr 82px 1fr 40px;gap:7px;align-items:center}.stat-duel-row b{text-align:center}.stat-duel-row span{text-align:center;color:var(--muted);font-size:9px}.duel-track{height:9px;border-radius:999px;background:#26323d;overflow:hidden}.duel-track.left{display:flex;justify-content:flex-end}.duel-a{height:100%;background:linear-gradient(90deg,#174b9a,#5ba8ff);border-radius:999px}.duel-b{height:100%;background:linear-gradient(90deg,#ff4d61,#c51f37);border-radius:999px}.timeline-pro{display:grid;gap:8px}.timeline-pro-row{display:grid;grid-template-columns:42px 28px 1fr;gap:8px;align-items:start;padding:8px 0;border-bottom:1px solid #202b36}.timeline-pro-row:last-child{border-bottom:0}.timeline-pro-row i{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:#202b36;font-style:normal}.timeline-pro-row b{font-size:10px}.timeline-pro-row small{display:block;color:var(--muted);font-size:8px;margin-top:3px}.knowledge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.knowledge-card{min-width:0;padding:10px;border-radius:13px;background:#0b1118}.knowledge-card b{display:block;font-size:9px}.knowledge-card small{display:block;color:var(--muted);font-size:7px;margin-top:4px;line-height:1.3}.match-video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.match-video{height:105px;padding:9px;display:flex;flex-direction:column;justify-content:flex-end;border-radius:13px;background:linear-gradient(180deg,transparent,#07101aee),linear-gradient(145deg,#33495d,#121a22);border:1px solid rgba(255,255,255,.08)}.match-video b{font-size:9px}.match-video small{font-size:7px;color:var(--muted);margin-top:3px}.match-table .row{grid-template-columns:26px 1fr 35px 35px 35px}.match-table .row span,.match-table .row strong{font-size:9px}.match-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}.match-tabs button{border:1px solid #2a3542;border-radius:999px;background:#131b25;color:#bdc5ce;padding:8px 3px;font-size:8px}.match-tabs button.active{background:var(--purple);border-color:var(--purple);color:#fff;font-weight:900}@media(max-width:380px){.match-meta{grid-template-columns:repeat(2,1fr)}.lineup-list,.absence-grid{grid-template-columns:1fr}.knowledge-grid,.match-video-grid{gap:5px}.stat-duel-row{grid-template-columns:34px 1fr 65px 1fr 34px}.match-score{gap:7px}.match-team .crest{width:50px;height:58px}}
+</style>
+
 </head>
 <body>
 <div class="app">
@@ -501,7 +506,82 @@ body{background:radial-gradient(circle at 50% -8%,#17263a 0,#0a111b 34%,#060910 
 <div class="card universal-section"><h3>Noticias recientes</h3><div class="news"><div class="news-item"><strong>Lamine lidera la victoria azulgrana</strong><small>Hace 1 h</small></div><div class="news-item"><strong>El equipo recupera a dos titulares</strong><small>Hace 4 h</small></div></div></div>
 </div>
 </main>
-<main class="screen hidden" data-card-system="compact-v12" id="match"><div class="backrow"><button class="back" data-back="">←</button><h2>Barcelona · Atlético</h2></div><div class="card panel"><div class="panel-head"><span class="status">HOY 21:00</span><span class="sub">Movistar+</span></div><h1>Barcelona vs Atlético</h1><div class="metrics"><div class="metric"><b>4-1-0</b><small>Barça últ. 5</small></div><div class="metric"><b>3-1-1</b><small>Atleti últ. 5</small></div><div class="metric"><b>62%</b><small>Prob. local</small></div></div></div><section class="section dashboard"><div class="card analyst"><div class="analyst-head"><div class="analyst-icon">✦</div><div class="analyst-title"><strong>El Analista</strong><small>Previa del partido</small></div></div><p>El Barcelona llega con más control y volumen ofensivo, pero el Atlético puede castigar las pérdidas. La banda derecha y Lamine serán claves.</p></div><div class="card panel"><div class="panel-title">Cómo llegan</div><div class="table"><div class="row"><b>1</b><span>Barcelona</span><strong>8,7</strong></div><div class="row"><b>2</b><span>Atlético</span><strong>8,1</strong></div></div></div><div class="card panel"><div class="panel-title">Apercibidos</div><div class="table"><div class="row"><b>🟨</b><span>Lamine Yamal</span><strong>1</strong></div><div class="row"><b>🟨</b><span>Gavi</span><strong>1</strong></div></div></div><div class="card panel"><div class="panel-title">Dónde verlo</div><div class="metrics"><div class="metric"><b>21:00</b><small>Hora</small></div><div class="metric"><b>Movistar+</b><small>Canal</small></div><div class="metric"><b>20:15</b><small>Previa</small></div></div></div></section></main>
+<main class="screen hidden" data-card-system="compact-v12" id="match">
+<div class="backrow"><button class="back" data-back="">←</button><h2>Barcelona · Atlético</h2></div>
+<div class="match-u">
+  <section class="match-u-card">
+    <div class="match-u-head"><div class="match-u-title"><span class="match-u-num">1</span>Resumen</div><span class="status">HOY · 21:00</span></div>
+    <div class="match-score">
+      <div class="match-team"><span class="crest crest-barca"></span><b>Barcelona</b><small class="sub">1º · 73 pts</small></div>
+      <div class="match-score-main"><b>–</b><small>LaLiga · Jornada 32</small></div>
+      <div class="match-team"><span class="crest crest-atleti"></span><b>Atlético</b><small class="sub">3º · 66 pts</small></div>
+    </div>
+    <div class="match-meta"><div><b>Montjuïc</b><small>Estadio</small></div><div><b>Movistar+</b><small>Televisión</small></div><div><b>18º · despejado</b><small>Meteorología</small></div><div><b>Gil Manzano</b><small>Árbitro</small></div><div><b>62%</b><small>Victoria Barça</small></div><div><b>20:15</b><small>Inicio previa</small></div></div>
+  </section>
+
+  <section class="match-u-card">
+    <div class="match-u-head"><div class="match-u-title"><span class="match-u-num">2</span>Alineaciones probables</div><span class="sub">4-3-3 · 4-4-2</span></div>
+    <div class="formation-tabs"><button class="formation-tab active" type="button">Barcelona</button><button class="formation-tab" type="button">Atlético</button></div>
+    <div class="pitch"><div class="pitch-circle"></div><div class="pitch-lineup">
+      <div class="pitch-player home" style="left:50%;top:91%"><i>13</i><b>Peña</b></div>
+      <div class="pitch-player home" style="left:15%;top:74%"><i>23</i><b>Koundé</b></div><div class="pitch-player home" style="left:39%;top:70%"><i>4</i><b>Araújo</b></div><div class="pitch-player home" style="left:63%;top:70%"><i>2</i><b>Cubarsí</b></div><div class="pitch-player home" style="left:87%;top:74%"><i>3</i><b>Balde</b></div>
+      <div class="pitch-player home" style="left:25%;top:48%"><i>8</i><b>Pedri</b></div><div class="pitch-player home" style="left:50%;top:53%"><i>21</i><b>De Jong</b></div><div class="pitch-player home" style="left:75%;top:48%"><i>6</i><b>Gavi</b></div>
+      <div class="pitch-player home" style="left:18%;top:22%"><i>11</i><b>Raphinha</b></div><div class="pitch-player home" style="left:50%;top:15%"><i>9</i><b>Lewandowski</b></div><div class="pitch-player home" style="left:82%;top:22%"><i>19</i><b>Lamine</b></div>
+    </div></div>
+    <div class="lineup-list" style="margin-top:10px"><div class="lineup-col"><h4>Banquillo Barça</h4><div class="lineup-person"><span>Ferran Torres</span><small>Delantero</small></div><div class="lineup-person"><span>Dani Olmo</span><small>Media punta</small></div><div class="lineup-person"><span>Eric García</span><small>Defensa</small></div><div class="lineup-person"><span>Szczęsny</span><small>Portero</small></div></div><div class="lineup-col"><h4>Banquillo Atlético</h4><div class="lineup-person"><span>Correa</span><small>Delantero</small></div><div class="lineup-person"><span>Sørloth</span><small>Delantero</small></div><div class="lineup-person"><span>Koke</span><small>Centrocampista</small></div><div class="lineup-person"><span>Le Normand</span><small>Defensa</small></div></div></div>
+  </section>
+
+  <section class="match-u-card">
+    <div class="match-u-head"><div class="match-u-title"><span class="match-u-num">3</span>Bajas y disponibilidad</div><span class="sub">Actualizado hoy</span></div>
+    <div class="absence-grid"><div class="absence"><b>Barcelona</b><small>Christensen · lesión muscular</small><small>Ter Stegen · duda</small><small>Casadó · sancionado</small></div><div class="absence"><b>Atlético</b><small>Giménez · duda</small><small>Lemar · lesión</small><small>De Paul · apercibido</small></div></div>
+  </section>
+
+  <section class="match-u-card">
+    <div class="match-u-head"><div class="match-u-title"><span class="match-u-num">4</span>Cómo llegan</div><span class="sub">Últimos 5 partidos</span></div>
+    <div class="metrics"><div class="metric"><b>4-1-0</b><small>Barcelona</small></div><div class="metric"><b>3-1-1</b><small>Atlético</small></div><div class="metric"><b>2,4</b><small>Goles Barça</small></div></div>
+    <div class="form-line"><span class="form-dot">G</span><span class="form-dot">G</span><span class="form-dot">E</span><span class="form-dot">G</span><span class="form-dot">G</span></div>
+  </section>
+
+  <section class="match-u-card">
+    <div class="match-u-head"><div class="match-u-title"><span class="match-u-num">5</span>Claves del partido</div><span class="sub">Datos comparados</span></div>
+    <div class="stat-duel"><div class="stat-duel-row"><b>64%</b><div class="duel-track left"><div class="duel-a" style="width:64%"></div></div><span>Posesión</span><div class="duel-track"><div class="duel-b" style="width:48%"></div></div><b>48%</b></div><div class="stat-duel-row"><b>2,1</b><div class="duel-track left"><div class="duel-a" style="width:84%"></div></div><span>xG medio</span><div class="duel-track"><div class="duel-b" style="width:60%"></div></div><b>1,5</b></div><div class="stat-duel-row"><b>16</b><div class="duel-track left"><div class="duel-a" style="width:80%"></div></div><span>Tiros</span><div class="duel-track"><div class="duel-b" style="width:55%"></div></div><b>11</b></div><div class="stat-duel-row"><b>91%</b><div class="duel-track left"><div class="duel-a" style="width:91%"></div></div><span>Pases</span><div class="duel-track"><div class="duel-b" style="width:84%"></div></div><b>84%</b></div></div>
+  </section>
+
+  <section class="match-u-card analyst">
+    <div class="analyst-head"><div class="analyst-icon">✦</div><div class="analyst-title"><strong>Analista Ralalu</strong><small>Previa táctica</small></div></div><p>El Barcelona debería dominar la posesión y buscar superioridades con Pedri y Lamine en la derecha. El Atlético puede hacer daño atacando el espacio tras pérdida. El duelo entre Lamine y el lateral izquierdo será una de las claves.</p>
+  </section>
+
+  <section class="match-u-card">
+    <div class="match-u-head"><div class="match-u-title"><span class="match-u-num">6</span>Qué se juega cada equipo</div><span class="sub">Contexto</span></div>
+    <div class="knowledge-grid"><div class="knowledge-card"><b>Barcelona</b><small>Una victoria le mantiene líder y amplía la presión sobre el segundo.</small></div><div class="knowledge-card"><b>Atlético</b><small>Necesita puntuar para consolidar plaza de Champions.</small></div><div class="knowledge-card"><b>Dato clave</b><small>El Barça lleva 11 partidos de Liga sin perder como local.</small></div></div>
+  </section>
+
+  <section class="match-u-card">
+    <div class="match-u-head"><div class="match-u-title"><span class="match-u-num">7</span>Cronología prevista</div><span class="sub">Se activa en directo</span></div>
+    <div class="timeline-pro"><div class="timeline-pro-row"><b>20:15</b><i>🎙️</i><div><b>Previa en directo</b><small>Alineaciones confirmadas y análisis.</small></div></div><div class="timeline-pro-row"><b>20:45</b><i>👥</i><div><b>Calentamiento</b><small>Últimas noticias desde el estadio.</small></div></div><div class="timeline-pro-row"><b>21:00</b><i>⚽</i><div><b>Inicio</b><small>Marcador, eventos y estadísticas en tiempo real.</small></div></div></div>
+  </section>
+
+  <section class="match-u-card">
+    <div class="match-u-head"><div class="match-u-title"><span class="match-u-num">8</span>Clasificación</div><button class="link" data-open="laliga" type="button">Ver completa</button></div>
+    <div class="table match-table"><div class="row"><b>1</b><span>Barcelona</span><strong>31</strong><strong>73</strong><strong>+48</strong></div><div class="row"><b>2</b><span>Real Madrid</span><strong>31</strong><strong>70</strong><strong>+42</strong></div><div class="row"><b>3</b><span>Atlético</span><strong>31</strong><strong>66</strong><strong>+31</strong></div><div class="row"><b>4</b><span>Athletic</span><strong>31</strong><strong>58</strong><strong>+22</strong></div></div>
+  </section>
+
+  <section class="match-u-card">
+    <div class="match-u-head"><div class="match-u-title"><span class="match-u-num">9</span>No te vayas sin saber esto</div><span class="sub">Contexto Ralalu</span></div>
+    <div class="knowledge-grid"><div class="knowledge-card"><b>Lamine, foco ofensivo</b><small>Participa en el 32% de las ocasiones creadas desde la derecha.</small></div><div class="knowledge-card"><b>Balón parado</b><small>El Atlético ha marcado 9 goles esta temporada en córners.</small></div><div class="knowledge-card"><b>Primer gol</b><small>El equipo que marca primero gana el 74% de estos enfrentamientos.</small></div></div>
+  </section>
+
+  <section class="match-u-card">
+    <div class="match-u-head"><div class="match-u-title"><span class="match-u-num">10</span>Vídeos y noticias</div><span class="sub">Contenido destacado</span></div>
+    <div class="match-video-grid"><button class="match-video" type="button"><b>Último Barça–Atlético</b><small>Resumen · 4 min</small></button><button class="match-video" type="button"><b>Claves tácticas</b><small>Análisis · 3 min</small></button><button class="match-video" type="button"><b>Ruedas de prensa</b><small>Declaraciones</small></button></div>
+  </section>
+
+  <section class="match-u-card">
+    <div class="match-u-head"><div class="match-u-title"><span class="match-u-num">11</span>Relacionados</div><span class="sub">Amplía la información</span></div>
+    <div class="related"><button class="related-card" data-open="barcelona" type="button"><i>🔵</i><strong>Barcelona</strong><small>Equipo</small></button><button class="related-card" data-open="lamine" type="button"><i>⚽</i><strong>Lamine</strong><small>Jugador</small></button><button class="related-card" data-open="laliga" type="button"><i>🏆</i><strong>LaLiga</strong><small>Competición</small></button><button class="related-card" data-open="football" type="button"><i>📊</i><strong>Fútbol</strong><small>Deporte</small></button></div>
+  </section>
+</div>
+</main>
 <main class="screen hidden" data-card-system="compact-v12" id="lamine">
 <div class="backrow"><button class="back" data-back="">←</button><h2>Lamine Yamal</h2></div>
 <div class="universal-hero card">
