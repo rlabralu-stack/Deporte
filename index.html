@@ -6,7 +6,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="#070a0f" name="theme-color"/>
-<title>Ralalu Demo 1.2 · revisión 20</title>
+<title>Ralalu Demo 1.2 · revisión 21</title>
 <style>
 :root{
   --bg:#070a0f;--panel:#111923;--panel-2:#17212c;--line:#273341;
@@ -359,9 +359,9 @@ body{background:radial-gradient(circle at 50% -8%,#17263a 0,#0a111b 34%,#060910 
 .ralalu-wording{display:flex;flex-direction:column;min-width:0}
 .ralalu-wording strong{font-size:24px!important;line-height:1;letter-spacing:-.045em;background:linear-gradient(90deg,#f8fbff 0%,#cdd8ff 50%,#af91ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .ralalu-wording small{margin-top:5px!important;font-size:8px!important;line-height:1;letter-spacing:.12em;text-transform:uppercase;color:#aeb8c8!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:245px}
-.ralalu-mark{position:relative;width:46px;height:46px;flex:0 0 46px;display:grid;place-items:center;border-radius:14px;background:radial-gradient(circle at 35% 20%,rgba(45,107,255,.18),transparent 45%),linear-gradient(145deg,#0a1428,#070b15);border:1px solid rgba(126,151,255,.22);box-shadow:0 10px 30px rgba(30,75,210,.24),inset 0 0 0 1px rgba(255,255,255,.025);overflow:hidden}
-.ralalu-r{width:38px;height:38px;display:block;filter:drop-shadow(0 5px 9px rgba(45,107,255,.26))}
-.ralalu-mark:after{content:"";position:absolute;inset:auto 8px 4px;height:1px;background:linear-gradient(90deg,transparent,rgba(0,212,255,.65),rgba(138,43,226,.65),transparent);opacity:.7}
+.ralalu-mark{position:relative;width:52px;height:46px;flex:0 0 52px;display:grid;place-items:center;background:transparent;border:0;filter:drop-shadow(0 9px 18px rgba(39,104,245,.28));overflow:visible}
+.ralalu-r{width:50px;height:44px;display:block}
+.ralalu-mark:after{content:"";position:absolute;left:8px;right:5px;bottom:-2px;height:2px;border-radius:999px;background:linear-gradient(90deg,transparent,var(--brand-cyan),var(--brand-purple),transparent);opacity:.55}
 .ralalu-avatar{border:1px solid rgba(255,255,255,.12);background:linear-gradient(145deg,#162638,#0c131d);color:#d9e4ff;box-shadow:inset 0 0 0 1px rgba(123,63,228,.18)}
 .link,.nav.active{color:#af91ff}
 .filter.active,.tab.active,.club-tab.active{background:linear-gradient(135deg,var(--brand-blue),var(--brand-purple));border-color:transparent}
@@ -372,7 +372,7 @@ body{background:radial-gradient(circle at 50% -8%,#17263a 0,#0a111b 34%,#060910 
 .bottom{background:#060a10f4;border-top-color:#1e2b3a}
 .bottom:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--brand-blue),var(--brand-purple),transparent);opacity:.7}
 .story-card,.home-mini-card,.sport-tile,.sport-template-card{box-shadow:0 12px 28px rgba(0,0,0,.17)}
-@media(max-width:380px){.ralalu-wording small{max-width:190px;font-size:7px!important}.ralalu-mark{width:42px;height:42px;flex-basis:42px}.ralalu-r{width:35px;height:35px}.ralalu-wording strong{font-size:22px!important}}
+@media(max-width:380px){.ralalu-wording small{max-width:190px;font-size:7px!important}.ralalu-mark{width:47px;height:42px;flex-basis:47px}.ralalu-r{width:46px;height:40px}.ralalu-wording strong{font-size:22px!important}}
 </style>
 </head>
 <body>
@@ -380,17 +380,30 @@ body{background:radial-gradient(circle at 50% -8%,#17263a 0,#0a111b 34%,#060910 
 <header class="topbar ralalu-topbar">
   <div class="brand ralalu-brand" aria-label="Ralalu">
     <span class="ralalu-mark" aria-hidden="true">
-      <svg class="ralalu-r" viewBox="0 0 100 100" role="img" aria-hidden="true">
+      <svg class="ralalu-r" viewBox="0 0 120 100" role="img" aria-label="Símbolo Ralalu">
         <defs>
-          <linearGradient id="ralaluGradient" x1="12" y1="8" x2="84" y2="92" gradientUnits="userSpaceOnUse">
+          <linearGradient id="ralaluFlow" x1="14" y1="8" x2="104" y2="92" gradientUnits="userSpaceOnUse">
             <stop offset="0" stop-color="#00d4ff"/>
-            <stop offset="0.48" stop-color="#2d6bff"/>
+            <stop offset="0.44" stop-color="#2d6bff"/>
             <stop offset="1" stop-color="#8a2be2"/>
           </linearGradient>
+          <linearGradient id="ralaluSpark" x1="32" y1="50" x2="86" y2="92" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#2d6bff"/>
+            <stop offset="1" stop-color="#a12cff"/>
+          </linearGradient>
+          <filter id="ralaluGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="1.6" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
         </defs>
-        <path fill="url(#ralaluGradient)" d="M18 16h43c17 0 29 11 29 26 0 11-6 20-16 24l18 22H68L48 64H36v24H18V50h41c8 0 13-3 13-9s-5-9-13-9H18V16z"/>
-        <path fill="url(#ralaluGradient)" d="M18 54h19L62 88H40L18 62v-8z" opacity=".98"/>
-        <path fill="#07101a" d="M18 36h42c7 0 11 2 11 6s-4 6-11 6H18V36z"/>
+        <!-- Trazo principal fluido: movimiento + R -->
+        <path fill="url(#ralaluFlow)" filter="url(#ralaluGlow)" d="M15 28C30 9 63 5 88 15c19 8 27 25 20 39-6 12-20 19-39 20l25 22H68L41 72c-7-6-10-13-7-19 3-7 11-10 22-10h25c8 0 13-3 14-8 1-6-5-10-14-12-18-4-39 1-51 13L15 28z"/>
+        <!-- Corte interior que mantiene la lectura limpia -->
+        <path fill="#07101a" d="M31 34c12-9 31-13 47-10 9 2 14 6 13 11-1 4-5 6-12 6H55c-12 0-21 4-25 12-3 6-2 12 2 18L18 59c-5-5-6-11-4-17 2-3 7-6 17-8z"/>
+        <!-- Impulso/rayo inferior inspirado en la opción 5 -->
+        <path fill="url(#ralaluSpark)" d="M37 58h20l34 38H68L53 79 42 92H22l23-24-8-10z"/>
+        <!-- Acento de velocidad -->
+        <path fill="#00d4ff" d="M14 22h38l-8 8H8l6-8z" opacity=".95"/>
       </svg>
     </span>
     <span class="ralalu-wording"><strong>Ralalu</strong><small>Todo el deporte. En un solo lugar.</small></span>
