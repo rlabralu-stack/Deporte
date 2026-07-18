@@ -6,7 +6,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="#070a0f" name="theme-color"/>
-<title>Ralalu Demo 1.2 · revisión 21</title>
+<title>Ralalu Demo 1.2 · revisión 22</title>
 <style>
 :root{
   --bg:#070a0f;--panel:#111923;--panel-2:#17212c;--line:#273341;
@@ -380,30 +380,24 @@ body{background:radial-gradient(circle at 50% -8%,#17263a 0,#0a111b 34%,#060910 
 <header class="topbar ralalu-topbar">
   <div class="brand ralalu-brand" aria-label="Ralalu">
     <span class="ralalu-mark" aria-hidden="true">
-      <svg class="ralalu-r" viewBox="0 0 120 100" role="img" aria-label="Símbolo Ralalu">
+      <svg class="ralalu-r" viewBox="0 0 120 100" role="img" aria-label="Símbolo Ralalu, concepto 6">
         <defs>
-          <linearGradient id="ralaluFlow" x1="14" y1="8" x2="104" y2="92" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#00d4ff"/>
-            <stop offset="0.44" stop-color="#2d6bff"/>
-            <stop offset="1" stop-color="#8a2be2"/>
+          <linearGradient id="ralaluSix" x1="16" y1="8" x2="101" y2="92" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#00D4FF"/>
+            <stop offset="0.46" stop-color="#2D6BFF"/>
+            <stop offset="1" stop-color="#8A2BE2"/>
           </linearGradient>
-          <linearGradient id="ralaluSpark" x1="32" y1="50" x2="86" y2="92" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#2d6bff"/>
-            <stop offset="1" stop-color="#a12cff"/>
+          <linearGradient id="ralaluSixSoft" x1="40" y1="38" x2="82" y2="91" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#159CFF"/>
+            <stop offset="1" stop-color="#A12CFF"/>
           </linearGradient>
-          <filter id="ralaluGlow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="1.6" result="blur"/>
-            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
         </defs>
-        <!-- Trazo principal fluido: movimiento + R -->
-        <path fill="url(#ralaluFlow)" filter="url(#ralaluGlow)" d="M15 28C30 9 63 5 88 15c19 8 27 25 20 39-6 12-20 19-39 20l25 22H68L41 72c-7-6-10-13-7-19 3-7 11-10 22-10h25c8 0 13-3 14-8 1-6-5-10-14-12-18-4-39 1-51 13L15 28z"/>
-        <!-- Corte interior que mantiene la lectura limpia -->
-        <path fill="#07101a" d="M31 34c12-9 31-13 47-10 9 2 14 6 13 11-1 4-5 6-12 6H55c-12 0-21 4-25 12-3 6-2 12 2 18L18 59c-5-5-6-11-4-17 2-3 7-6 17-8z"/>
-        <!-- Impulso/rayo inferior inspirado en la opción 5 -->
-        <path fill="url(#ralaluSpark)" d="M37 58h20l34 38H68L53 79 42 92H22l23-24-8-10z"/>
-        <!-- Acento de velocidad -->
-        <path fill="#00d4ff" d="M14 22h38l-8 8H8l6-8z" opacity=".95"/>
+        <!-- Concepto 6: cinta continua, fluida y deportiva -->
+        <path fill="url(#ralaluSix)" d="M14 31C25 12 48 5 72 10c22 5 36 19 35 35-1 15-14 26-34 30l20 18H69L48 74c-8-7-11-14-8-21 3-8 12-12 25-12h16c7 0 11-3 11-8 0-6-7-11-17-13-17-3-35 3-46 16L14 31z"/>
+        <path fill="#07101A" d="M29 34c11-10 27-14 43-11 10 2 16 7 16 12 0 5-5 8-12 8H63c-13 0-23 4-28 12-4 7-3 14 3 21L22 62c-7-6-9-13-7-20 2-4 7-7 14-8z"/>
+        <path fill="url(#ralaluSixSoft)" d="M40 57h20l31 36H69L55 77 42 91H20l25-25-5-9z"/>
+        <!-- Remate fino que refuerza la sensación de velocidad -->
+        <path fill="url(#ralaluSix)" d="M15 23c14-13 35-19 54-16-20 0-37 7-47 20L15 23z" opacity=".96"/>
       </svg>
     </span>
     <span class="ralalu-wording"><strong>Ralalu</strong><small>Todo el deporte. En un solo lugar.</small></span>
